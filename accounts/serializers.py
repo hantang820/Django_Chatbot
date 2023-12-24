@@ -61,9 +61,4 @@ class LoginSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         user = validated_data['user']
-        token = RefreshToken.for_user(user)
-        tokens = {
-            'refresh_token': str(token),
-            'access_token': str(token.access_token)
-        }
-        return tokens
+        return user
